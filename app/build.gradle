@@ -19,6 +19,7 @@ android {
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
 
         buildConfigField("String", "FOOTBALL_URL", '"https://www.thesportsdb.com/api/v1/json/1/"')
+        buildConfigField("String", "LEAGUE", '"4328"')
     }
 
     buildTypes {
