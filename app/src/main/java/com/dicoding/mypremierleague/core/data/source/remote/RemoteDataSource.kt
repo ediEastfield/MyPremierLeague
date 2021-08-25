@@ -32,10 +32,10 @@ class RemoteDataSource @Inject constructor(private val apiService: ApiService) {
         }.flowOn(Dispatchers.IO)
     }
 
-    suspend fun getMatchResults(): Flow<ApiResponse<List<MatchResultResponse>>> {
+    suspend fun getMatchResults(r: String, s: String): Flow<ApiResponse<List<MatchResultResponse>>> {
         return  flow {
             try {
-                val response = apiService.getListMatchResults()
+                val response = apiService.getListMatchResults(r, s)
                 val dataArray = response.events
                 if (dataArray.isNotEmpty()) {
                     emit(ApiResponse.Success(response.events))

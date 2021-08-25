@@ -13,14 +13,14 @@ data class MatchResult(
     val description: String?,
     val homeTeam: String,
     val awayTeam: String,
-    val homeScore: String,
+    val homeScore: String?,
     val round: String,
-    val awayScore: String,
+    val awayScore: String?,
     val dateEvent: String,
     val homeTeamId: String,
     val awayTeamId: String,
     val venue: String,
     val thumb: String,
     val status: String,
-    val video: String
+    val video: String?
 ): Parcelable

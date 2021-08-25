@@ -9,6 +9,6 @@ interface IMyPremierLeagueRepository {
 
     fun getStandingLeague(season: String): Flow<Resource<List<Standing>>>
 
-    fun getMatchResult(): Flow<Resource<List<MatchResult>>>
+    fun getMatchResult(round: String, season: String): Flow<Resource<List<MatchResult>>>
 
 }

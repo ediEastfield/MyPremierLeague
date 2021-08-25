@@ -9,5 +9,5 @@ import javax.inject.Inject
 
 @HiltViewModel
 class MatchResultsViewModel @Inject constructor(private val myPremierLeagueUseCase: MyPremierLeagueUseCase) : ViewModel() {
-    fun matchResults() = myPremierLeagueUseCase.getMatchResult().asLiveData()
+    fun matchResults(round: String, season: String) = myPremierLeagueUseCase.getMatchResult(round, season).asLiveData()
 }

@@ -26,7 +26,7 @@ data class MatchResultEntity (
     var season: String,
 
     @ColumnInfo(name = "description")
-    var description: String,
+    var description: String?,
 
     @ColumnInfo(name = "homeTeam")
     var homeTeam: String,
@@ -35,13 +35,13 @@ data class MatchResultEntity (
     var awayTeam: String,
 
     @ColumnInfo(name = "homeScore")
-    var homeScore: String,
+    var homeScore: String?,
 
     @ColumnInfo(name = "round")
     var round: String,
 
     @ColumnInfo(name = "awayScore")
-    var awayScore: String,
+    var awayScore: String?,
 
     @ColumnInfo(name = "dateEvent")
     var dateEvent: String,
@@ -62,6 +62,6 @@ data class MatchResultEntity (
     var status: String,
 
     @ColumnInfo(name = "video")
-    var video: String
+    var video: String?
 
 )

@@ -17,8 +17,8 @@ interface MyPremierLeagueDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertStandingLeague(standingLeague: List<StandingEntity>)
 
-    @Query("SELECT * FROM matchResult ORDER BY dateEvent ASC")
-    fun getMatchResults(): Flow<List<MatchResultEntity>>
+    @Query("SELECT * FROM matchResult WHERE round = :round ORDER BY dateEvent ASC")
+    fun getMatchResults(round: String): Flow<List<MatchResultEntity>>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertMatchResult(matchResult: List<MatchResultEntity>)

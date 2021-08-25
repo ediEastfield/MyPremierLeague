@@ -14,8 +14,10 @@ interface ApiService {
         @Query("l") l: String = BuildConfig.LEAGUE,
     ): ListStandingResponse
 
-    @GET("eventspastleague.php")
+    @GET("eventsround.php")
     suspend fun getListMatchResults(
+        @Query("r") r: String,
+        @Query("s") s: String,
         @Query("id") id: String = BuildConfig.LEAGUE
     ): ListMatchResultResponse
 

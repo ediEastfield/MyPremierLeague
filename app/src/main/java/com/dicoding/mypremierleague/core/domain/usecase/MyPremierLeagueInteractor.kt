@@ -6,5 +6,5 @@ import javax.inject.Inject
 class MyPremierLeagueInteractor @Inject constructor(private val myPremierLeagueRepository: IMyPremierLeagueRepository) : MyPremierLeagueUseCase {
 
     override fun getStandingLeague(season: String) = myPremierLeagueRepository.getStandingLeague(season)
-    override fun getMatchResult() = myPremierLeagueRepository.getMatchResult()
+    override fun getMatchResult(round: String, season: String) = myPremierLeagueRepository.getMatchResult(round, season)
 }

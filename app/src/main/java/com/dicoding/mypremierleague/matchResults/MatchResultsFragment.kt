@@ -6,18 +6,19 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.annotation.StringRes
+import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.dicoding.mypremierleague.R
 import com.dicoding.mypremierleague.core.data.Resource
 import com.dicoding.mypremierleague.core.ui.MatchResultAdapter
 import com.dicoding.mypremierleague.databinding.FragmentMatchResultsBinding
+import com.google.android.material.tabs.TabLayoutMediator
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class MatchResultsFragment : Fragment() {
-
-    private val matchResultsViewModel: MatchResultsViewModel by viewModels()
 
     private var _binding: FragmentMatchResultsBinding? = null
     private val binding get() = _binding!!
@@ -29,41 +30,15 @@ class MatchResultsFragment : Fragment() {
     ): View? {
         _binding = FragmentMatchResultsBinding.inflate(inflater, container, false)
         return binding.root
+
     }
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
+    override fun onActivityCreated(savedInstanceState: Bundle?) {
+        super.onActivityCreated(savedInstanceState)
 
-        if (activity != null) {
+        val sectionsPagerAdapter = SectionsMatchResultPagerAdapter(activity as AppCompatActivity)
+        binding.viewPager.adapter = sectionsPagerAdapter
 
-            val matchResultsAdapter = MatchResultAdapter()
-            matchResultsAdapter.onItemClick = { selectedData ->
-                Toast.makeText(requireContext(), "$selectedData", Toast.LENGTH_SHORT).show()
-            }
-
-            matchResultsViewModel.matchResults().observe(viewLifecycleOwner, { matchResults ->
-                if (matchResults != null) {
-                    when (matchResults) {
-                        is Resource.Loading -> binding.progressBar.visibility = View.VISIBLE
-                        is Resource.Success -> {
-                            binding.progressBar.visibility = View.GONE
-                            matchResultsAdapter.setData(matchResults.data)
-                        }
-                        is Resource.Error -> {
-                            binding.progressBar.visibility = View.GONE
-                            binding.viewError.root.visibility = View.VISIBLE
-                            binding.viewError.tvError.text = matchResults.message ?: getString((R.string.something_wrong))
-                        }
-                    }
-                }
-            })
-
-            with(binding.rvMatchResults) {
-                layoutManager = LinearLayoutManager(context)
-                setHasFixedSize(true)
-                adapter = matchResultsAdapter
-            }
-        }
     }
 
     override fun onDestroyView() {

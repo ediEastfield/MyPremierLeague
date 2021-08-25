@@ -42,10 +42,10 @@ class MyPremierLeagueRepository @Inject constructor(
             }
         }.asFlow()
 
-    override fun getMatchResult(): Flow<Resource<List<MatchResult>>> =
+    override fun getMatchResult(round: String, season: String): Flow<Resource<List<MatchResult>>> =
     object : NetworkBoundResource<List<MatchResult>, List<MatchResultResponse>>() {
         override fun loadFromDB(): Flow<List<MatchResult>> {
-            return localDataSource.getMatchResults().map {
+            return localDataSource.getMatchResults(round).map {
                 DataMapper.mapMatchResultEntitiesToDomain(it)
             }
         }
@@ -54,7 +54,7 @@ class MyPremierLeagueRepository @Inject constructor(
             true
 
         override suspend fun createCall(): Flow<ApiResponse<List<MatchResultResponse>>> =
-            remoteDataSource.getMatchResults()
+            remoteDataSource.getMatchResults(round, season)
 
         override suspend fun saveCallResult(data: List<MatchResultResponse>) {
             val matchResultList = DataMapper.mapEventResponsesToEntities(data)
