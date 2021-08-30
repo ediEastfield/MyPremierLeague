@@ -1,5 +1,6 @@
 package com.dicoding.mypremierleague.matchResults
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -13,6 +14,7 @@ import com.dicoding.mypremierleague.R
 import com.dicoding.mypremierleague.core.data.Resource
 import com.dicoding.mypremierleague.core.ui.MatchResultAdapter
 import com.dicoding.mypremierleague.databinding.FragmentMatchweekResultsBinding
+import com.dicoding.mypremierleague.detailMatch.DetailMatchActivity
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -53,7 +55,9 @@ class MatchweekResultsFragment : Fragment() {
 
             val matchResultsAdapter = MatchResultAdapter()
             matchResultsAdapter.onItemClick = { selectedData ->
-                Toast.makeText(requireContext(), "$selectedData", Toast.LENGTH_SHORT).show()
+                val intent = Intent(activity, DetailMatchActivity::class.java)
+                intent.putExtra(DetailMatchActivity.EXTRA_DATA, selectedData)
+                startActivity(intent)
             }
 
             matchResultsViewModel.matchResults(index.toString(), "2021-2022").observe(viewLifecycleOwner, { matchResults ->

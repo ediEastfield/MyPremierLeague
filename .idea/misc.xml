@@ -4,13 +4,16 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/Belajar/MyPremierLeague/app/src/main/res/drawable/ic_favorite_black.xml" value="0.14444444444444443" />
+        <entry key="..\:/Belajar/MyPremierLeague/app/src/main/res/layout/activity_detail_match.xml" value="0.25" />
         <entry key="..\:/Belajar/MyPremierLeague/app/src/main/res/layout/activity_main.xml" value="0.22" />
         <entry key="..\:/Belajar/MyPremierLeague/app/src/main/res/layout/activity_team.xml" value="0.2" />
+        <entry key="..\:/Belajar/MyPremierLeague/app/src/main/res/layout/content_detail_match.xml" value="0.25" />
         <entry key="..\:/Belajar/MyPremierLeague/app/src/main/res/layout/content_team.xml" value="0.20416666666666666" />
         <entry key="..\:/Belajar/MyPremierLeague/app/src/main/res/layout/fragment_match_results.xml" value="0.25" />
         <entry key="..\:/Belajar/MyPremierLeague/app/src/main/res/layout/fragment_matchweek_results.xml" value="0.22" />
+        <entry key="..\:/Belajar/MyPremierLeague/app/src/main/res/layout/fragment_standings.xml" value="0.33" />
         <entry key="..\:/Belajar/MyPremierLeague/app/src/main/res/layout/item_list_match_results.xml" value="0.1" />
-        <entry key="..\:/Belajar/MyPremierLeague/app/src/main/res/layout/item_list_standings.xml" value="0.1" />
+        <entry key="..\:/Belajar/MyPremierLeague/app/src/main/res/layout/item_list_standings.xml" value="0.22" />
         <entry key="..\:/Belajar/MyPremierLeague/app/src/main/res/layout/item_team_jersy.xml" value="0.20416666666666666" />
         <entry key="..\:/Belajar/MyPremierLeague/app/src/main/res/layout/item_team_profile.xml" value="0.20416666666666666" />
         <entry key="..\:/Belajar/MyPremierLeague/app/src/main/res/layout/item_team_stadium.xml" value="0.33" />

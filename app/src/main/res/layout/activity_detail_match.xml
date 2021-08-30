@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context=".detailMatch.DetailMatchActivity">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:id="@+id/iv_match_thumb"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:background="@android:color/darker_gray"
+                android:contentDescription="@string/image_description"
+                android:scaleType="fitXY"
+                app:layout_constraintDimensionRatio="H,1.5:1"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/tv_match_date"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:textAppearance="@style/TextAppearance.AppCompat.Caption"
+                android:textColor="#FFFFFFFF"
+                android:textStyle="italic"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="@tools:sample/date/ddmmyy" />
+
+            <TextView
+                android:id="@+id/tv_match_venue"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="@style/TextAppearance.AppCompat.Caption"
+                android:textColor="#FFFFFFFF"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_match_date"
+                tools:text="@string/text_primary" />
+
+            <TextView
+                android:id="@+id/tv_match_status"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="64dp"
+                android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                android:textColor="#FFFFFFFF"
+                app:layout_constraintBottom_toBottomOf="@+id/iv_match_thumb"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="@+id/iv_match_thumb"
+                tools:text="@string/status" />
+
+            <TextView
+                android:id="@+id/tv_match_home_score"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="16dp"
+                android:layout_marginBottom="16dp"
+                android:textColor="#FFFFFFFF"
+                android:textAppearance="@style/TextAppearance.AppCompat.Headline"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/tv_match_status"
+                app:layout_constraintStart_toStartOf="parent"
+                tools:text="@string/text_number" />
+
+            <TextView
+                android:id="@+id/tv_match_away_score"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginBottom="16dp"
+                android:textColor="#FFFFFFFF"
+                android:textAppearance="@style/TextAppearance.AppCompat.Headline"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/tv_match_status"
+                tools:text="@string/text_number" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.core.widget.NestedScrollView>
