@@ -51,125 +51,221 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="4dp"
             android:layout_marginTop="8dp"
-            android:layout_marginEnd="8dp"
+            android:layout_marginEnd="4dp"
             android:layout_marginBottom="8dp"
             android:textAppearance="@style/TextAppearance.AppCompat.Caption"
             android:textColor="#B3000000"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/tv_standing_played"
+            app:layout_constraintEnd_toStartOf="@+id/view8"
             app:layout_constraintStart_toEndOf="@+id/iv_standing_badge_team"
             app:layout_constraintTop_toTopOf="parent"
             tools:text="@string/club" />
 
+        <View
+            android:id="@+id/view8"
+            android:layout_width="0.5dp"
+            android:layout_height="0dp"
+            android:layout_marginEnd="32dp"
+            android:background="#7F000000"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/view7"
+            app:layout_constraintTop_toTopOf="parent" />
+
         <TextView
             android:id="@+id/tv_standing_played"
-            android:layout_width="0dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginStart="4dp"
             android:layout_marginTop="8dp"
-            android:layout_marginEnd="16dp"
+            android:layout_marginEnd="4dp"
             android:layout_marginBottom="8dp"
             android:textAppearance="@style/TextAppearance.AppCompat.Caption"
             android:textColor="#B3000000"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/tv_standing_won"
+            app:layout_constraintEnd_toStartOf="@+id/view7"
+            app:layout_constraintStart_toEndOf="@+id/view8"
             app:layout_constraintTop_toTopOf="parent"
             tools:text="@string/played" />
 
+        <View
+            android:id="@+id/view7"
+            android:layout_width="0.5dp"
+            android:layout_height="0dp"
+            android:layout_marginEnd="32dp"
+            android:background="#7F000000"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/view6"
+            app:layout_constraintTop_toTopOf="parent" />
+
         <TextView
             android:id="@+id/tv_standing_won"
-            android:layout_width="0dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginStart="4dp"
             android:layout_marginTop="8dp"
-            android:layout_marginEnd="16dp"
+            android:layout_marginEnd="4dp"
             android:layout_marginBottom="8dp"
             android:textAppearance="@style/TextAppearance.AppCompat.Caption"
             android:textColor="#B3000000"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/tv_standing_drawn"
+            app:layout_constraintEnd_toStartOf="@+id/view6"
+            app:layout_constraintStart_toEndOf="@+id/view7"
             app:layout_constraintTop_toTopOf="parent"
             tools:text="@string/won" />
 
+        <View
+            android:id="@+id/view6"
+            android:layout_width="0.5dp"
+            android:layout_height="0dp"
+            android:layout_marginEnd="32dp"
+            android:background="#7F000000"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/view5"
+            app:layout_constraintTop_toTopOf="parent" />
+
         <TextView
             android:id="@+id/tv_standing_drawn"
-            android:layout_width="0dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginStart="4dp"
             android:layout_marginTop="8dp"
-            android:layout_marginEnd="16dp"
+            android:layout_marginEnd="4dp"
             android:layout_marginBottom="8dp"
             android:textAppearance="@style/TextAppearance.AppCompat.Caption"
             android:textColor="#B3000000"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/tv_standing_lost"
+            app:layout_constraintEnd_toStartOf="@+id/view5"
+            app:layout_constraintStart_toEndOf="@+id/view6"
             app:layout_constraintTop_toTopOf="parent"
             tools:text="@string/draw" />
 
+        <View
+            android:id="@+id/view5"
+            android:layout_width="0.5dp"
+            android:layout_height="0dp"
+            android:layout_marginEnd="32dp"
+            android:background="#7F000000"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/view4"
+            app:layout_constraintTop_toTopOf="parent" />
+
         <TextView
             android:id="@+id/tv_standing_lost"
-            android:layout_width="0dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginStart="4dp"
             android:layout_marginTop="8dp"
-            android:layout_marginEnd="16dp"
+            android:layout_marginEnd="4dp"
             android:layout_marginBottom="8dp"
             android:textAppearance="@style/TextAppearance.AppCompat.Caption"
             android:textColor="#B3000000"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/tv_standing_goals_for"
+            app:layout_constraintEnd_toStartOf="@+id/view4"
+            app:layout_constraintStart_toEndOf="@+id/view5"
             app:layout_constraintTop_toTopOf="parent"
             tools:text="@string/lost" />
 
+        <View
+            android:id="@+id/view4"
+            android:layout_width="0.5dp"
+            android:layout_height="0dp"
+            android:layout_marginEnd="32dp"
+            android:background="#7F000000"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/view3"
+            app:layout_constraintTop_toTopOf="parent" />
+
         <TextView
             android:id="@+id/tv_standing_goals_for"
-            android:layout_width="0dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginStart="4dp"
             android:layout_marginTop="8dp"
-            android:layout_marginEnd="16dp"
+            android:layout_marginEnd="4dp"
             android:layout_marginBottom="8dp"
             android:textAppearance="@style/TextAppearance.AppCompat.Caption"
             android:textColor="#B3000000"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/tv_standing_goals_against"
+            app:layout_constraintEnd_toStartOf="@+id/view3"
+            app:layout_constraintStart_toEndOf="@+id/view4"
             app:layout_constraintTop_toTopOf="parent"
             tools:text="@string/goals_for" />
 
+        <View
+            android:id="@+id/view3"
+            android:layout_width="0.5dp"
+            android:layout_height="0dp"
+            android:layout_marginEnd="32dp"
+            android:background="#7F000000"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/view2"
+            app:layout_constraintTop_toTopOf="parent" />
+
         <TextView
             android:id="@+id/tv_standing_goals_against"
-            android:layout_width="0dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginStart="4dp"
             android:layout_marginTop="8dp"
-            android:layout_marginEnd="16dp"
+            android:layout_marginEnd="4dp"
             android:layout_marginBottom="8dp"
             android:textAppearance="@style/TextAppearance.AppCompat.Caption"
             android:textColor="#B3000000"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/tv_standing_goals_difference"
+            app:layout_constraintEnd_toStartOf="@+id/view2"
+            app:layout_constraintStart_toEndOf="@+id/view3"
             app:layout_constraintTop_toTopOf="parent"
             tools:text="@string/goals_against" />
 
+        <View
+            android:id="@+id/view2"
+            android:layout_width="0.5dp"
+            android:layout_height="0dp"
+            android:layout_marginEnd="32dp"
+            android:background="#7F000000"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/view1"
+            app:layout_constraintTop_toTopOf="parent" />
+
         <TextView
             android:id="@+id/tv_standing_goals_difference"
-            android:layout_width="0dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginStart="4dp"
             android:layout_marginTop="8dp"
-            android:layout_marginEnd="16dp"
+            android:layout_marginEnd="4dp"
             android:layout_marginBottom="8dp"
             android:textAppearance="@style/TextAppearance.AppCompat.Caption"
             android:textColor="#B3000000"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/tv_standing_points"
+            app:layout_constraintEnd_toStartOf="@+id/view1"
+            app:layout_constraintStart_toEndOf="@+id/view2"
             app:layout_constraintTop_toTopOf="parent"
             tools:text="@string/goals_difference" />
 
+        <View
+            android:id="@+id/view1"
+            android:layout_width="0.5dp"
+            android:layout_height="0dp"
+            android:layout_marginEnd="32dp"
+            android:background="#7F000000"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
         <TextView
             android:id="@+id/tv_standing_points"
-            android:layout_width="0dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginStart="4dp"
             android:layout_marginTop="8dp"
-            android:layout_marginEnd="16dp"
+            android:layout_marginEnd="4dp"
             android:layout_marginBottom="8dp"
             android:textAppearance="@style/TextAppearance.AppCompat.Caption"
             android:textColor="#B3000000"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/view1"
             app:layout_constraintTop_toTopOf="parent"
             tools:text="@string/points" />
 
