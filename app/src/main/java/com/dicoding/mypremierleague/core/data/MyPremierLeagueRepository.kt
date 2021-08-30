@@ -5,8 +5,10 @@ import com.dicoding.mypremierleague.core.data.source.remote.RemoteDataSource
 import com.dicoding.mypremierleague.core.data.source.remote.network.ApiResponse
 import com.dicoding.mypremierleague.core.data.source.remote.response.MatchResultResponse
 import com.dicoding.mypremierleague.core.data.source.remote.response.StandingResponse
+import com.dicoding.mypremierleague.core.data.source.remote.response.TeamResponse
 import com.dicoding.mypremierleague.core.domain.model.MatchResult
 import com.dicoding.mypremierleague.core.domain.model.Standing
+import com.dicoding.mypremierleague.core.domain.model.Team
 import com.dicoding.mypremierleague.core.domain.repository.IMyPremierLeagueRepository
 import com.dicoding.mypremierleague.core.utils.AppExecutors
 import com.dicoding.mypremierleague.core.utils.DataMapper
@@ -43,23 +45,54 @@ class MyPremierLeagueRepository @Inject constructor(
         }.asFlow()
 
     override fun getMatchResult(round: String, season: String): Flow<Resource<List<MatchResult>>> =
-    object : NetworkBoundResource<List<MatchResult>, List<MatchResultResponse>>() {
-        override fun loadFromDB(): Flow<List<MatchResult>> {
-            return localDataSource.getMatchResults(round).map {
-                DataMapper.mapMatchResultEntitiesToDomain(it)
+        object : NetworkBoundResource<List<MatchResult>, List<MatchResultResponse>>() {
+            override fun loadFromDB(): Flow<List<MatchResult>> {
+                return localDataSource.getMatchResults(round).map {
+                    DataMapper.mapMatchResultEntitiesToDomain(it)
+                }
             }
+
+            override fun shouldFetch(data: List<MatchResult>?): Boolean =
+                true
+
+            override suspend fun createCall(): Flow<ApiResponse<List<MatchResultResponse>>> =
+                remoteDataSource.getMatchResults(round, season)
+
+            override suspend fun saveCallResult(data: List<MatchResultResponse>) {
+                val matchResultList = DataMapper.mapEventResponsesToEntities(data)
+                localDataSource.insertMatchResults(matchResultList)
+            }
+        }.asFlow()
+
+    override fun getDetailTeam(teamId: String): Flow<Resource<List<Team>>> =
+        object : NetworkBoundResource<List<Team>, List<TeamResponse>>() {
+            override fun loadFromDB(): Flow<List<Team>> {
+                return localDataSource.getDetailTeam(teamId). map {
+                    DataMapper.mapTeamEntitiesToDomain(it)
+                }
+            }
+
+            override fun shouldFetch(data: List<Team>?): Boolean =
+                data == null || data.isEmpty()
+
+            override suspend fun createCall(): Flow<ApiResponse<List<TeamResponse>>> =
+                remoteDataSource.getDetailTeam(teamId)
+
+            override suspend fun saveCallResult(data: List<TeamResponse>) {
+                val teamList = DataMapper.mapTeamResponsesToEntities(data)
+                localDataSource.insertTeam(teamList)
+            }
+        }.asFlow()
+
+    override fun getFavoriteTeam(): Flow<List<Team>> {
+        return localDataSource.getFavoriteTeam().map {
+            DataMapper.mapTeamEntitiesToDomain(it)
         }
+    }
 
-        override fun shouldFetch(data: List<MatchResult>?): Boolean =
-            true
-
-        override suspend fun createCall(): Flow<ApiResponse<List<MatchResultResponse>>> =
-            remoteDataSource.getMatchResults(round, season)
-
-        override suspend fun saveCallResult(data: List<MatchResultResponse>) {
-            val matchResultList = DataMapper.mapEventResponsesToEntities(data)
-            localDataSource.insertMatchResults(matchResultList)
-        }
-    }.asFlow()
+    override fun setFavoriteTeam(team: Team, state: Boolean) {
+        val teamEntity = DataMapper.mapTeamDomainToEntity(team)
+        appExecutors.diskIO().execute { localDataSource.setFavoriteTeam(teamEntity, state) }
+    }
 
 }

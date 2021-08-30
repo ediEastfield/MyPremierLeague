@@ -1,17 +1,18 @@
 package com.dicoding.mypremierleague.standings
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.dicoding.mypremierleague.R
 import com.dicoding.mypremierleague.core.data.Resource
 import com.dicoding.mypremierleague.core.ui.StandingAdapter
 import com.dicoding.mypremierleague.databinding.FragmentStandingsBinding
+import com.dicoding.mypremierleague.team.TeamActivity
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -37,7 +38,9 @@ class StandingsFragment : Fragment() {
         if (activity != null) {
             val standingAdapter = StandingAdapter()
             standingAdapter.onItemClick = { selectedData ->
-                Toast.makeText(requireContext(), "$selectedData", Toast.LENGTH_SHORT).show()
+                val intent = Intent(activity, TeamActivity::class.java)
+                intent.putExtra(TeamActivity.EXTRA_DATA, selectedData)
+                startActivity(intent)
             }
 
             standingsViewModel.standingLeague("2021-2022").observe(viewLifecycleOwner, { standings ->

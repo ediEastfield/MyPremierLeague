@@ -26,6 +26,9 @@
     <string name="points">Pt</string>
     <string name="versus">V</string>
     <string name="match_week">Match week %1$d</string>
+    <string name="official_website">Official Website : </string>
+    <string name="location">Location : </string>
+    <string name="capacity">Capacity : </string>
 
     <string name="no_data">Empty data</string>
     <string name="something_wrong">Oops.. something went wrong</string>

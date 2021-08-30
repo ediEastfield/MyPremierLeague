@@ -2,6 +2,7 @@ package com.dicoding.mypremierleague.core.data.source.local
 
 import com.dicoding.mypremierleague.core.data.source.local.entity.MatchResultEntity
 import com.dicoding.mypremierleague.core.data.source.local.entity.StandingEntity
+import com.dicoding.mypremierleague.core.data.source.local.entity.TeamEntity
 import com.dicoding.mypremierleague.core.data.source.local.room.MyPremierLeagueDao
 import kotlinx.coroutines.flow.Flow
 import javax.inject.Inject
@@ -17,5 +18,16 @@ class LocalDataSource @Inject constructor(private val myPremierLeagueDao: MyPrem
     fun getMatchResults(round: String): Flow<List<MatchResultEntity>> = myPremierLeagueDao.getMatchResults(round)
 
     suspend fun insertMatchResults(matchResultList: List<MatchResultEntity>) = myPremierLeagueDao.insertMatchResult(matchResultList)
+
+    fun getDetailTeam(teamId: String): Flow<List<TeamEntity>> = myPremierLeagueDao.getDetailTeam(teamId)
+
+    fun getFavoriteTeam(): Flow<List<TeamEntity>> = myPremierLeagueDao.getFavoriteTeam()
+
+    suspend fun insertTeam(teamList: List<TeamEntity>) = myPremierLeagueDao.insertTeam(teamList)
+
+    fun setFavoriteTeam(team: TeamEntity,newState: Boolean) {
+        team.isFavorite = newState
+        myPremierLeagueDao.updateFavoriteTeam(team)
+    }
 
 }

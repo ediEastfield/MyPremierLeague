@@ -2,10 +2,13 @@ package com.dicoding.mypremierleague.core.utils
 
 import com.dicoding.mypremierleague.core.data.source.local.entity.MatchResultEntity
 import com.dicoding.mypremierleague.core.data.source.local.entity.StandingEntity
+import com.dicoding.mypremierleague.core.data.source.local.entity.TeamEntity
 import com.dicoding.mypremierleague.core.data.source.remote.response.MatchResultResponse
 import com.dicoding.mypremierleague.core.data.source.remote.response.StandingResponse
+import com.dicoding.mypremierleague.core.data.source.remote.response.TeamResponse
 import com.dicoding.mypremierleague.core.domain.model.MatchResult
 import com.dicoding.mypremierleague.core.domain.model.Standing
+import com.dicoding.mypremierleague.core.domain.model.Team
 
 object DataMapper {
 
@@ -50,6 +53,31 @@ object DataMapper {
                 thumb = it.thumb,
                 status = it.status,
                 video = it.video
+            )
+        }
+
+    fun mapTeamEntitiesToDomain(input: List<TeamEntity>): List<Team> =
+        input.map {
+            Team(
+                teamId = it.teamId,
+                teamBadge = it.teamBadge,
+                team = it.team,
+                keywords = it.keywords,
+                formedYear = it.formedYear,
+                instagram = it.instagram,
+                website = it.website,
+                youtube = it.youtube,
+                twitter = it.twitter,
+                facebook = it.facebook,
+                description = it.description,
+                stadiumThumb = it.stadiumThumb,
+                stadium = it.stadium,
+                stadiumCapacity = it.stadiumCapacity,
+                stadiumLocation = it.stadiumLocation,
+                stadiumDescription = it.stadiumDescription,
+                teamJersey = it.teamJersey,
+                teamBanner = it.teamBanner,
+                isFavorite = it.isFavorite
             )
         }
 
@@ -104,5 +132,56 @@ object DataMapper {
         }
         return matchResultList
     }
+
+    fun mapTeamResponsesToEntities(input: List<TeamResponse>): List<TeamEntity> {
+        val teamList = ArrayList<TeamEntity>()
+        input.map {
+            val team = TeamEntity(
+                teamId = it.teamId,
+                teamBadge = it.teamBadge,
+                team = it.team,
+                keywords = it.keywords,
+                formedYear = it.formedYear,
+                instagram = it.instagram,
+                website = it.website,
+                youtube = it.youtube,
+                twitter = it.twitter,
+                facebook = it.facebook,
+                description = it.description,
+                stadiumThumb = it.stadiumThumb,
+                stadium = it.stadium,
+                stadiumCapacity = it.stadiumCapacity,
+                stadiumLocation = it.stadiumLocation,
+                stadiumDescription = it.stadiumDescription,
+                teamJersey = it.teamJersey,
+                teamBanner = it.teamBanner,
+                isFavorite = false
+            )
+            teamList.add(team)
+        }
+        return teamList
+    }
+
+    fun mapTeamDomainToEntity(input: Team) = TeamEntity(
+        teamId = input.teamId,
+        teamBadge = input.teamBadge,
+        team = input.team,
+        keywords = input.keywords,
+        formedYear = input.formedYear,
+        instagram = input.instagram,
+        website = input.website,
+        youtube = input.youtube,
+        twitter = input.twitter,
+        facebook = input.facebook,
+        description = input.description,
+        stadiumThumb = input.stadiumThumb,
+        stadium = input.stadium,
+        stadiumCapacity = input.stadiumCapacity,
+        stadiumLocation = input.stadiumLocation,
+        stadiumDescription = input.stadiumDescription,
+        teamJersey = input.teamJersey,
+        teamBanner = input.teamBanner,
+        isFavorite = input.isFavorite
+    )
 
 }

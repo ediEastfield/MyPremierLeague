@@ -4,11 +4,13 @@ import androidx.room.Database
 import androidx.room.RoomDatabase
 import com.dicoding.mypremierleague.core.data.source.local.entity.MatchResultEntity
 import com.dicoding.mypremierleague.core.data.source.local.entity.StandingEntity
+import com.dicoding.mypremierleague.core.data.source.local.entity.TeamEntity
 
 @Database(
     entities = [
         StandingEntity::class,
         MatchResultEntity::class,
+        TeamEntity::class,
                ],
     version = 1,
     exportSchema = false
