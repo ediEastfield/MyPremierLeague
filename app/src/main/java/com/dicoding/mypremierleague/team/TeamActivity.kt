@@ -1,5 +1,7 @@
 package com.dicoding.mypremierleague.team
 
+import android.content.Intent
+import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
@@ -67,7 +69,14 @@ class TeamActivity : AppCompatActivity() {
             binding.contentTeam.cardProfile.tvTeamFormed.text = teamData.formedYear
             binding.contentTeam.cardProfile.tvTeamWebsite.text = teamData.website
             binding.contentTeam.cardProfile.ibTeamFacebook.setOnClickListener { Toast.makeText(this, teamData.facebook, Toast.LENGTH_SHORT).show() }
-            binding.contentTeam.cardProfile.ibTeamInstagram.setOnClickListener { Toast.makeText(this, teamData.instagram, Toast.LENGTH_SHORT).show() }
+
+            binding.contentTeam.cardProfile.ibTeamInstagram.setOnClickListener {
+                val uri = Uri.parse(teamData.instagram)
+                val instagram = Intent(Intent.ACTION_VIEW, uri)
+                instagram.setPackage("com.instagram.android")
+                startActivity(instagram)
+            }
+
             binding.contentTeam.cardProfile.ibTeamTwitter.setOnClickListener { Toast.makeText(this, teamData.twitter, Toast.LENGTH_SHORT).show() }
             binding.contentTeam.cardProfile.ibTeamYoutube.setOnClickListener { Toast.makeText(this, teamData.youtube, Toast.LENGTH_SHORT).show() }
             binding.contentTeam.cardProfile.tvTeamDescription.text = teamData.description

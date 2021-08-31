@@ -27,6 +27,7 @@ class DetailMatchActivity : AppCompatActivity() {
 
         val detailMatch = intent.getParcelableExtra<MatchResult>(EXTRA_DATA)
         showDetailMatch(detailMatch)
+
     }
 
     private fun showDetailMatch(detailMatch: MatchResult?) {

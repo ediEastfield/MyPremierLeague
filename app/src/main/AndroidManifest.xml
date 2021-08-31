@@ -13,6 +13,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MyPremierLeague">
         <activity
+            android:name=".youtube.YoutubeActivity"
+            android:exported="true" />
+        <activity
             android:name=".detailMatch.DetailMatchActivity"
             android:exported="true" />
         <activity
