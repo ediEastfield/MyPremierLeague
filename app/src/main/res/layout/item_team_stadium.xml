@@ -18,84 +18,97 @@
 
         <ImageView
             android:id="@+id/iv_stadium_badge"
-            android:layout_width="156dp"
+            android:layout_width="0dp"
             android:layout_height="156dp"
-            android:layout_marginStart="16dp"
             android:layout_marginTop="16dp"
             android:background="@android:color/white"
             android:contentDescription="@string/image_description"
             android:scaleType="centerCrop"
-            app:layout_constraintDimensionRatio="H, 1.5:1"
+            app:layout_constraintDimensionRatio="W, 8:3.5"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/tv_stadium_name"
-            android:layout_width="0dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
+            android:layout_marginTop="8dp"
             android:layout_marginEnd="16dp"
             android:textAppearance="@style/TextAppearance.AppCompat.Headline"
             android:textColor="#FF000000"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/iv_stadium_badge"
-            app:layout_constraintTop_toTopOf="@+id/iv_stadium_badge"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/iv_stadium_badge"
             tools:text="@string/text_primary" />
 
-        <TextView
-            android:id="@+id/tv_location"
+        <LinearLayout
+            android:id="@+id/location"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
-            android:layout_marginTop="16dp"
-            android:text="@string/location"
-            android:textAppearance="@style/TextAppearance.AppCompat.Caption"
-            android:textColor="#FF000000"
-            app:layout_constraintStart_toEndOf="@+id/iv_stadium_badge"
-            app:layout_constraintTop_toBottomOf="@+id/tv_stadium_name" />
-
-        <TextView
-            android:id="@+id/tv_stadium_location"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
             android:layout_marginEnd="16dp"
-            android:textAppearance="@style/TextAppearance.AppCompat.Caption"
-            android:textColor="#FF000000"
+            android:orientation="horizontal"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/tv_location"
-            app:layout_constraintTop_toTopOf="@+id/tv_location"
-            tools:text="@string/text_subtitle" />
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_stadium_name">
 
-        <TextView
-            android:id="@+id/tv_capacity"
+            <TextView
+                android:id="@+id/tv_location"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/location"
+                android:textAppearance="@style/TextAppearance.AppCompat.Caption"
+                android:textColor="#FF000000" />
+
+            <TextView
+                android:id="@+id/tv_stadium_location"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="4dp"
+                android:textAppearance="@style/TextAppearance.AppCompat.Caption"
+                android:textColor="#FF000000"
+                tools:text="@string/text_subtitle" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/capacity"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
-            android:layout_marginTop="16dp"
-            android:text="@string/capacity"
-            android:textAppearance="@style/TextAppearance.AppCompat.Caption"
-            android:textColor="#FF000000"
-            app:layout_constraintStart_toEndOf="@+id/iv_stadium_badge"
-            app:layout_constraintTop_toBottomOf="@+id/tv_location" />
-
-        <TextView
-            android:id="@+id/tv_stadium_capacity"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
             android:layout_marginEnd="16dp"
-            android:textAppearance="@style/TextAppearance.AppCompat.Caption"
-            android:textColor="#FF000000"
+            android:orientation="horizontal"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/tv_capacity"
-            app:layout_constraintTop_toTopOf="@+id/tv_capacity"
-            tools:text="@string/text_subtitle" />
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/location">
+
+            <TextView
+                android:id="@+id/tv_capacity"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/capacity"
+                android:textAppearance="@style/TextAppearance.AppCompat.Caption"
+                android:textColor="#FF000000" />
+
+            <TextView
+                android:id="@+id/tv_stadium_capacity"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="4dp"
+                android:textAppearance="@style/TextAppearance.AppCompat.Caption"
+                android:textColor="#FF000000"
+                tools:text="@string/text_subtitle" />
+        </LinearLayout>
 
         <TextView
             android:id="@+id/tv_stadium_description"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="32dp"
             android:layout_marginEnd="16dp"
             android:layout_marginBottom="16dp"
             android:textAppearance="@style/TextAppearance.AppCompat.Caption"
@@ -103,7 +116,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/iv_stadium_badge"
+            app:layout_constraintTop_toBottomOf="@+id/capacity"
             tools:text="@string/text_subtitle" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.cardview.widget.CardView>

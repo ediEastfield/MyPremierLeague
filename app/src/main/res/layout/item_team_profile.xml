@@ -20,12 +20,12 @@
             android:id="@+id/iv_team_badge"
             android:layout_width="128dp"
             android:layout_height="128dp"
-            android:layout_marginStart="16dp"
             android:layout_marginTop="16dp"
             android:background="@android:color/white"
             android:contentDescription="@string/image_description"
             android:scaleType="centerCrop"
             app:layout_constraintDimensionRatio="H, 1.5:1"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -34,12 +34,13 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
+            android:layout_marginTop="8dp"
             android:layout_marginEnd="16dp"
             android:textAppearance="@style/TextAppearance.AppCompat.Headline"
             android:textColor="#FF000000"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/iv_team_badge"
-            app:layout_constraintTop_toTopOf="@+id/iv_team_badge"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/iv_team_badge"
             tools:text="@string/text_primary" />
 
         <TextView
@@ -49,10 +50,10 @@
             android:layout_marginStart="16dp"
             android:layout_marginEnd="16dp"
             android:textAppearance="@style/TextAppearance.AppCompat.Caption"
-            android:textStyle="italic"
             android:textColor="#FF000000"
+            android:textStyle="italic"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/iv_team_badge"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tv_team_name"
             tools:text="@string/text_subtitle" />
 
@@ -66,48 +67,53 @@
             android:textColor="#757575"
             android:textStyle="italic"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/iv_team_badge"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tv_team_keywords"
             tools:text="@string/text_subtitle" />
 
-        <TextView
-            android:id="@+id/tv_website"
+        <LinearLayout
+            android:id="@+id/website"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
-            android:layout_marginTop="8dp"
+            android:layout_marginTop="4dp"
             android:layout_marginEnd="16dp"
-            android:textAppearance="@style/TextAppearance.AppCompat.Caption"
-            android:textColor="#FF000000"
-            app:layout_constraintStart_toEndOf="@+id/iv_team_badge"
-            app:layout_constraintTop_toBottomOf="@+id/tv_team_formed"
-            android:text="@string/official_website" />
-
-        <TextView
-            android:id="@+id/tv_team_website"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:layout_marginEnd="16dp"
-            android:textAppearance="@style/TextAppearance.AppCompat.Caption"
-            android:textColor="#FF000000"
+            android:orientation="horizontal"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/tv_website"
-            app:layout_constraintTop_toBottomOf="@+id/tv_team_formed"
-            tools:text="@string/official_website" />
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_team_formed">
+
+            <TextView
+                android:id="@+id/tv_website"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/official_website"
+                android:textAppearance="@style/TextAppearance.AppCompat.Caption"
+                android:textColor="#FF000000" />
+
+            <TextView
+                android:id="@+id/tv_team_website"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="4dp"
+                android:layout_marginEnd="16dp"
+                android:textAppearance="@style/TextAppearance.AppCompat.Caption"
+                android:textColor="#FF000000"
+                tools:text="@string/official_website" />
+
+        </LinearLayout>
 
         <ImageButton
             android:id="@+id/ib_team_facebook"
             android:layout_width="24dp"
             android:layout_height="24dp"
-            android:layout_marginStart="16dp"
             android:layout_marginTop="8dp"
             android:background="@android:color/white"
             android:contentDescription="@string/image_description"
             android:scaleType="centerCrop"
             android:src="@drawable/ic_facebook"
-            app:layout_constraintStart_toEndOf="@+id/iv_team_badge"
-            app:layout_constraintTop_toBottomOf="@+id/tv_website"
+            app:layout_constraintStart_toStartOf="@+id/iv_team_badge"
+            app:layout_constraintTop_toBottomOf="@+id/website"
             tools:ignore="DuplicateSpeakableTextCheck,TouchTargetSizeCheck" />
 
         <ImageButton
@@ -121,7 +127,7 @@
             android:scaleType="centerCrop"
             android:src="@drawable/ic_instagram"
             app:layout_constraintStart_toEndOf="@+id/ib_team_facebook"
-            app:layout_constraintTop_toBottomOf="@+id/tv_website"
+            app:layout_constraintTop_toBottomOf="@+id/website"
             tools:ignore="DuplicateSpeakableTextCheck,TouchTargetSizeCheck,ImageContrastCheck" />
 
         <ImageButton
@@ -135,7 +141,7 @@
             android:scaleType="centerCrop"
             android:src="@drawable/ic_twitter"
             app:layout_constraintStart_toEndOf="@+id/ib_team_instagram"
-            app:layout_constraintTop_toBottomOf="@+id/tv_website"
+            app:layout_constraintTop_toBottomOf="@+id/website"
             tools:ignore="DuplicateSpeakableTextCheck,TouchTargetSizeCheck,ImageContrastCheck,ImageContrastCheck" />
 
         <ImageButton
@@ -150,7 +156,7 @@
             android:scaleType="centerCrop"
             android:src="@drawable/ic_youtube"
             app:layout_constraintStart_toEndOf="@+id/ib_team_twitter"
-            app:layout_constraintTop_toBottomOf="@+id/tv_website"
+            app:layout_constraintTop_toBottomOf="@+id/website"
             tools:ignore="DuplicateSpeakableTextCheck,TouchTargetSizeCheck" />
 
         <TextView
@@ -158,7 +164,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
-            android:layout_marginTop="24dp"
+            android:layout_marginTop="32dp"
             android:layout_marginEnd="16dp"
             android:layout_marginBottom="16dp"
             android:textAppearance="@style/TextAppearance.AppCompat.Caption"
@@ -166,7 +172,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/iv_team_badge"
+            app:layout_constraintTop_toBottomOf="@+id/ib_team_facebook"
             tools:text="@string/text_subtitle" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.cardview.widget.CardView>

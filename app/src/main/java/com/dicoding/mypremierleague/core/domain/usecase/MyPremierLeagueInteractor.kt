@@ -1,7 +1,9 @@
 package com.dicoding.mypremierleague.core.domain.usecase
 
+import com.dicoding.mypremierleague.core.domain.model.League
 import com.dicoding.mypremierleague.core.domain.model.Team
 import com.dicoding.mypremierleague.core.domain.repository.IMyPremierLeagueRepository
+import kotlinx.coroutines.flow.Flow
 import javax.inject.Inject
 
 class MyPremierLeagueInteractor @Inject constructor(private val myPremierLeagueRepository: IMyPremierLeagueRepository) : MyPremierLeagueUseCase {
@@ -11,5 +13,6 @@ class MyPremierLeagueInteractor @Inject constructor(private val myPremierLeagueR
     override fun getDetailTeam(teamId: String) = myPremierLeagueRepository.getDetailTeam(teamId)
     override fun getFavoriteTeam() = myPremierLeagueRepository.getFavoriteTeam()
     override fun setFavoriteTeam(team: Team, state: Boolean) = myPremierLeagueRepository.setFavoriteTeam(team, state)
+    override fun getDetailLeague() = myPremierLeagueRepository.getDetailLeague()
 
 }

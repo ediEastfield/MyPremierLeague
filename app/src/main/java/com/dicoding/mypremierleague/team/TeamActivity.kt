@@ -32,35 +32,38 @@ class TeamActivity : AppCompatActivity() {
         binding = ActivityTeamBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        val team = intent.getParcelableExtra<Standing>(EXTRA_DATA)
+        val team = intent.getStringExtra(EXTRA_DATA)
 
         supportActionBar?.setDisplayShowHomeEnabled(true)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         supportActionBar?.elevation = 0f
-        supportActionBar?.title = team?.team
 
-        teamViewModel.getDetailTeam(team!!.teamId).observe(this, { teamData ->
-            if (teamData != null) {
-                when (teamData) {
-                    is Resource.Loading -> binding.contentTeam.progressBar.visibility = View.VISIBLE
-                    is Resource.Success -> {
-                        binding.contentTeam.progressBar.visibility = View.GONE
-                        teamData.data?.map { data ->
-                            showDetailTeam(data)
+        if (team != null) {
+            teamViewModel.getDetailTeam(team).observe(this, { teamData ->
+                if (teamData != null) {
+                    when (teamData) {
+                        is Resource.Loading -> binding.contentTeam.progressBar.visibility = View.VISIBLE
+                        is Resource.Success -> {
+                            binding.contentTeam.progressBar.visibility = View.GONE
+                            teamData.data?.map { data ->
+                                showDetailTeam(data)
+                            }
+                        }
+                        is Resource.Error -> {
+                            binding.contentTeam.progressBar.visibility = View.GONE
+                            binding.contentTeam.viewError.root.visibility = View.VISIBLE
+                            binding.contentTeam.viewError.tvError.text = teamData.message ?: getString(R.string.something_wrong)
                         }
                     }
-                    is Resource.Error -> {
-                        binding.contentTeam.progressBar.visibility = View.GONE
-                        binding.contentTeam.viewError.root.visibility = View.VISIBLE
-                        binding.contentTeam.viewError.tvError.text = teamData.message ?: getString(R.string.something_wrong)
-                    }
                 }
-            }
-        })
+            })
+        }
     }
 
     private fun showDetailTeam(teamData: Team) {
         teamData.let {
+            supportActionBar?.title = teamData.team
+
             Glide.with(this)
                 .load(teamData.teamBadge)
                 .into(binding.contentTeam.cardProfile.ivTeamBadge)
@@ -69,14 +72,7 @@ class TeamActivity : AppCompatActivity() {
             binding.contentTeam.cardProfile.tvTeamFormed.text = teamData.formedYear
             binding.contentTeam.cardProfile.tvTeamWebsite.text = teamData.website
             binding.contentTeam.cardProfile.ibTeamFacebook.setOnClickListener { Toast.makeText(this, teamData.facebook, Toast.LENGTH_SHORT).show() }
-
-            binding.contentTeam.cardProfile.ibTeamInstagram.setOnClickListener {
-                val uri = Uri.parse(teamData.instagram)
-                val instagram = Intent(Intent.ACTION_VIEW, uri)
-                instagram.setPackage("com.instagram.android")
-                startActivity(instagram)
-            }
-
+            binding.contentTeam.cardProfile.ibTeamInstagram.setOnClickListener { Toast.makeText(this, teamData.instagram, Toast.LENGTH_SHORT).show() }
             binding.contentTeam.cardProfile.ibTeamTwitter.setOnClickListener { Toast.makeText(this, teamData.twitter, Toast.LENGTH_SHORT).show() }
             binding.contentTeam.cardProfile.ibTeamYoutube.setOnClickListener { Toast.makeText(this, teamData.youtube, Toast.LENGTH_SHORT).show() }
             binding.contentTeam.cardProfile.tvTeamDescription.text = teamData.description

@@ -1,10 +1,10 @@
 package com.dicoding.mypremierleague.core.data.source.remote.network
 
 import com.dicoding.mypremierleague.BuildConfig
+import com.dicoding.mypremierleague.core.data.source.remote.response.ListLeagueResponse
 import com.dicoding.mypremierleague.core.data.source.remote.response.ListMatchResultResponse
 import com.dicoding.mypremierleague.core.data.source.remote.response.ListStandingResponse
 import com.dicoding.mypremierleague.core.data.source.remote.response.ListTeamResponse
-import com.dicoding.mypremierleague.core.data.source.remote.response.TeamResponse
 import retrofit2.http.GET
 import retrofit2.http.Query
 
@@ -27,5 +27,10 @@ interface ApiService {
     suspend fun getDetailTeam(
         @Query("id") id: String,
     ): ListTeamResponse
+
+    @GET("lookupleague.php")
+    suspend fun getDetailLeague(
+        @Query("id") id: String = BuildConfig.LEAGUE
+    ): ListLeagueResponse
 
 }

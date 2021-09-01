@@ -3,9 +3,11 @@ package com.dicoding.mypremierleague.core.data
 import com.dicoding.mypremierleague.core.data.source.local.LocalDataSource
 import com.dicoding.mypremierleague.core.data.source.remote.RemoteDataSource
 import com.dicoding.mypremierleague.core.data.source.remote.network.ApiResponse
+import com.dicoding.mypremierleague.core.data.source.remote.response.LeagueResponse
 import com.dicoding.mypremierleague.core.data.source.remote.response.MatchResultResponse
 import com.dicoding.mypremierleague.core.data.source.remote.response.StandingResponse
 import com.dicoding.mypremierleague.core.data.source.remote.response.TeamResponse
+import com.dicoding.mypremierleague.core.domain.model.League
 import com.dicoding.mypremierleague.core.domain.model.MatchResult
 import com.dicoding.mypremierleague.core.domain.model.Standing
 import com.dicoding.mypremierleague.core.domain.model.Team
@@ -94,5 +96,25 @@ class MyPremierLeagueRepository @Inject constructor(
         val teamEntity = DataMapper.mapTeamDomainToEntity(team)
         appExecutors.diskIO().execute { localDataSource.setFavoriteTeam(teamEntity, state) }
     }
+
+    override fun getDetailLeague(): Flow<Resource<List<League>>> =
+        object : NetworkBoundResource<List<League>, List<LeagueResponse>>() {
+            override fun loadFromDB(): Flow<List<League>> {
+                return localDataSource.getDetailLeague().map {
+                    DataMapper.mapLeagueEntitiesToDomain(it)
+                }
+            }
+
+            override fun shouldFetch(data: List<League>?): Boolean =
+                data == null || data.isEmpty()
+
+            override suspend fun createCall(): Flow<ApiResponse<List<LeagueResponse>>> =
+                remoteDataSource.getDetailLeague()
+
+            override suspend fun saveCallResult(data: List<LeagueResponse>) {
+                val leagueList = DataMapper.mapLeagueResponsesToEntities(data)
+                localDataSource.insertLeague(leagueList)
+            }
+        }.asFlow()
 
 }

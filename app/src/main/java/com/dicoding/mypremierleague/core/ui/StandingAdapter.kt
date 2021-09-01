@@ -41,11 +41,6 @@ class StandingAdapter : RecyclerView.Adapter<StandingAdapter.ListViewHolder>() {
                     .into(ivStandingBadgeTeam)
                 tvStandingNameTeam.text = data.team
                 tvStandingPlayed.text = data.played
-                tvStandingWon.text = data.win
-                tvStandingDrawn.text = data.draw
-                tvStandingLost.text = data.lost
-                tvStandingGoalsFor.text = data.goalsFor
-                tvStandingGoalsAgainst.text = data.goalsAgainst
                 tvStandingGoalsDifference.text = data.goalDifference
                 tvStandingPoints.text = data.points
             }

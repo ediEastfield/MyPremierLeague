@@ -1,11 +1,14 @@
 package com.dicoding.mypremierleague.core.utils
 
+import com.dicoding.mypremierleague.core.data.source.local.entity.LeagueEntity
 import com.dicoding.mypremierleague.core.data.source.local.entity.MatchResultEntity
 import com.dicoding.mypremierleague.core.data.source.local.entity.StandingEntity
 import com.dicoding.mypremierleague.core.data.source.local.entity.TeamEntity
+import com.dicoding.mypremierleague.core.data.source.remote.response.LeagueResponse
 import com.dicoding.mypremierleague.core.data.source.remote.response.MatchResultResponse
 import com.dicoding.mypremierleague.core.data.source.remote.response.StandingResponse
 import com.dicoding.mypremierleague.core.data.source.remote.response.TeamResponse
+import com.dicoding.mypremierleague.core.domain.model.League
 import com.dicoding.mypremierleague.core.domain.model.MatchResult
 import com.dicoding.mypremierleague.core.domain.model.Standing
 import com.dicoding.mypremierleague.core.domain.model.Team
@@ -78,6 +81,19 @@ object DataMapper {
                 teamJersey = it.teamJersey,
                 teamBanner = it.teamBanner,
                 isFavorite = it.isFavorite
+            )
+        }
+
+    fun mapLeagueEntitiesToDomain(input: List<LeagueEntity>): List<League> =
+        input.map {
+            League(
+                leagueId = it.leagueId,
+                description = it.description,
+                trophy = it.trophy,
+                badge = it.badge,
+                fanart = it.fanart,
+                league = it.league,
+                currentSeason = it.currentSeason
             )
         }
 
@@ -160,6 +176,23 @@ object DataMapper {
             teamList.add(team)
         }
         return teamList
+    }
+
+    fun mapLeagueResponsesToEntities(input: List<LeagueResponse>): List<LeagueEntity> {
+        val leagueList = ArrayList<LeagueEntity>()
+        input.map {
+            val league = LeagueEntity(
+                leagueId = it.leagueId,
+                description = it.description,
+                trophy = it.trophy,
+                badge = it.badge,
+                fanart = it.fanart,
+                league = it.league,
+                currentSeason = it.currentSeason
+            )
+            leagueList.add(league)
+        }
+        return leagueList
     }
 
     fun mapTeamDomainToEntity(input: Team) = TeamEntity(

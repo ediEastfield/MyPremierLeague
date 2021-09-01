@@ -1,5 +1,6 @@
 package com.dicoding.mypremierleague.core.data.source.local
 
+import com.dicoding.mypremierleague.core.data.source.local.entity.LeagueEntity
 import com.dicoding.mypremierleague.core.data.source.local.entity.MatchResultEntity
 import com.dicoding.mypremierleague.core.data.source.local.entity.StandingEntity
 import com.dicoding.mypremierleague.core.data.source.local.entity.TeamEntity
@@ -29,5 +30,9 @@ class LocalDataSource @Inject constructor(private val myPremierLeagueDao: MyPrem
         team.isFavorite = newState
         myPremierLeagueDao.updateFavoriteTeam(team)
     }
+
+    fun getDetailLeague(): Flow<List<LeagueEntity>> = myPremierLeagueDao.getDetailLeague()
+
+    suspend fun insertLeague(leagueList: List<LeagueEntity>) = myPremierLeagueDao.insertDetailLeague(leagueList)
 
 }

@@ -1,6 +1,7 @@
 package com.dicoding.mypremierleague.core.data.source.local.room
 
 import androidx.room.*
+import com.dicoding.mypremierleague.core.data.source.local.entity.LeagueEntity
 import com.dicoding.mypremierleague.core.data.source.local.entity.MatchResultEntity
 import com.dicoding.mypremierleague.core.data.source.local.entity.StandingEntity
 import com.dicoding.mypremierleague.core.data.source.local.entity.TeamEntity
@@ -32,4 +33,10 @@ interface MyPremierLeagueDao {
 
     @Update
     fun updateFavoriteTeam(team: TeamEntity)
+
+    @Query("SELECT * FROM league")
+    fun getDetailLeague(): Flow<List<LeagueEntity>>
+
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    suspend fun insertDetailLeague(detailLeague: List<LeagueEntity>)
 }

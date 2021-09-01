@@ -39,7 +39,7 @@ class StandingsFragment : Fragment() {
             val standingAdapter = StandingAdapter()
             standingAdapter.onItemClick = { selectedData ->
                 val intent = Intent(activity, TeamActivity::class.java)
-                intent.putExtra(TeamActivity.EXTRA_DATA, selectedData)
+                intent.putExtra(TeamActivity.EXTRA_DATA, selectedData.teamId)
                 startActivity(intent)
             }
 
