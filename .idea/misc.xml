@@ -31,6 +31,9 @@
         <entry key="..\:/Belajar/MyPremierLeague/app/src/main/res/layout/view_empty.xml" value="0.1" />
         <entry key="..\:/Belajar/MyPremierLeague/app/src/main/res/layout/view_error.xml" value="0.1" />
         <entry key="..\:/Belajar/MyPremierLeague/app/src/main/res/menu/activity_league_bottom_navigation.xml" value="0.1" />
+        <entry key="..\:/Belajar/MyPremierLeague/core/src/main/res/drawable/ic_next.xml" value="0.2203125" />
+        <entry key="..\:/Belajar/MyPremierLeague/core/src/main/res/layout/item_list_match_results.xml" value="0.20416666666666666" />
+        <entry key="..\:/Belajar/MyPremierLeague/core/src/main/res/layout/item_list_standings.xml" value="0.20416666666666666" />
       </map>
     </option>
   </component>
