@@ -1,5 +1,7 @@
 package com.dicoding.mypremierleague
 
+import android.content.Intent
+import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.MenuItem
@@ -8,7 +10,6 @@ import androidx.core.view.GravityCompat
 import androidx.fragment.app.Fragment
 import com.dicoding.mypremierleague.about.AboutFragment
 import com.dicoding.mypremierleague.databinding.ActivityMainBinding
-import com.dicoding.mypremierleague.favorite.FavoriteFragment
 import com.dicoding.mypremierleague.matchResults.MatchResultsFragment
 import com.dicoding.mypremierleague.standings.StandingsFragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
@@ -56,8 +57,8 @@ class MainActivity : AppCompatActivity(), BottomNavigationView.OnNavigationItemS
                 title = getString(R.string.app_name)
             }
             R.id.nav_favorite -> {
-                fragment = FavoriteFragment()
-                title = getString(R.string.menu_favorite)
+                val uri = Uri.parse("mypremierleague://favorite")
+                startActivity(Intent(Intent.ACTION_VIEW, uri))
             }
             R.id.nav_about -> {
                 fragment = AboutFragment()
