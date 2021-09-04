@@ -1,7 +1,5 @@
 package com.dicoding.mypremierleague.team
 
-import android.content.Intent
-import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
@@ -11,7 +9,6 @@ import androidx.core.content.ContextCompat
 import com.bumptech.glide.Glide
 import com.dicoding.mypremierleague.R
 import com.dicoding.mypremierleague.core.data.Resource
-import com.dicoding.mypremierleague.core.domain.model.Standing
 import com.dicoding.mypremierleague.core.domain.model.Team
 import com.dicoding.mypremierleague.databinding.ActivityTeamBinding
 import dagger.hilt.android.AndroidEntryPoint

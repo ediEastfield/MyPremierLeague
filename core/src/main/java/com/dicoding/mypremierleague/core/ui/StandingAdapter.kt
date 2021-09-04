@@ -1,5 +1,6 @@
 package com.dicoding.mypremierleague.core.ui
 
+import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -14,6 +15,7 @@ class StandingAdapter : RecyclerView.Adapter<StandingAdapter.ListViewHolder>() {
     private var listData = ArrayList<Standing>()
     var onItemClick: ((Standing) -> Unit)? = null
 
+    @SuppressLint("NotifyDataSetChanged")
     fun setData(newListData: List<Standing>?) {
         if (newListData == null) return
         listData.clear()

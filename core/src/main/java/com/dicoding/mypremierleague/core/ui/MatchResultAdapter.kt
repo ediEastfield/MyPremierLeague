@@ -1,5 +1,6 @@
 package com.dicoding.mypremierleague.core.ui
 
+import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -13,6 +14,7 @@ class MatchResultAdapter : RecyclerView.Adapter<MatchResultAdapter.ListViewHolde
     private var listData = ArrayList<MatchResult>()
     var onItemClick: ((MatchResult) -> Unit)? = null
 
+    @SuppressLint("NotifyDataSetChanged")
     fun setData(newListData: List<MatchResult>?) {
         if (newListData == null) return
         listData.clear()
