@@ -39,6 +39,10 @@ class FavoriteActivity : AppCompatActivity() {
         binding = ActivityFavoriteBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        supportActionBar?.setDisplayShowHomeEnabled(true)
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+        supportActionBar?.elevation = 0f
+
         val favoriteAdapter = FavoriteAdapter()
         favoriteAdapter.onItemClick = { selectedData ->
             val intent = Intent(this, TeamActivity::class.java)
@@ -56,5 +60,10 @@ class FavoriteActivity : AppCompatActivity() {
             setHasFixedSize(true)
             adapter = favoriteAdapter
         }
+    }
+
+    override fun onSupportNavigateUp(): Boolean {
+        onBackPressed()
+        return true
     }
 }

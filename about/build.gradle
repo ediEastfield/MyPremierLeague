@@ -10,7 +10,7 @@ android {
     compileSdkVersion 30
 
     defaultConfig {
-        applicationId "com.dicoding.mypremierleague.favorite"
+        applicationId "com.dicoding.mypremierleague.about"
         minSdkVersion 21
         targetSdkVersion 30
         versionCode 1

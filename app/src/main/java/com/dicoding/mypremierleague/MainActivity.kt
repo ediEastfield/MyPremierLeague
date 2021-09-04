@@ -8,7 +8,6 @@ import android.view.MenuItem
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.core.view.GravityCompat
 import androidx.fragment.app.Fragment
-import com.dicoding.mypremierleague.about.AboutFragment
 import com.dicoding.mypremierleague.databinding.ActivityMainBinding
 import com.dicoding.mypremierleague.matchResults.MatchResultsFragment
 import com.dicoding.mypremierleague.standings.StandingsFragment
@@ -61,8 +60,8 @@ class MainActivity : AppCompatActivity(), BottomNavigationView.OnNavigationItemS
                 startActivity(Intent(Intent.ACTION_VIEW, uri))
             }
             R.id.nav_about -> {
-                fragment = AboutFragment()
-                title = getString(R.string.menu_about)
+                val uri = Uri.parse("mypremierleague://about")
+                startActivity(Intent(Intent.ACTION_VIEW, uri))
             }
             R.id.nav_standings -> {
                 fragment = StandingsFragment()
