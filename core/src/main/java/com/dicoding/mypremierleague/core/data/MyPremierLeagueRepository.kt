@@ -61,6 +61,7 @@ class MyPremierLeagueRepository @Inject constructor(
                 remoteDataSource.getMatchResults(round, season)
 
             override suspend fun saveCallResult(data: List<MatchResultResponse>) {
+                localDataSource.deleteStandingLeague()
                 val matchResultList = DataMapper.mapEventResponsesToEntities(data)
                 localDataSource.insertMatchResults(matchResultList)
             }

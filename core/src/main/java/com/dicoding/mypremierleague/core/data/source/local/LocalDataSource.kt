@@ -16,6 +16,8 @@ class LocalDataSource @Inject constructor(private val myPremierLeagueDao: MyPrem
 
     suspend fun insertStandingLeague(standingLeagueList: List<StandingEntity>) = myPremierLeagueDao.insertStandingLeague(standingLeagueList)
 
+    suspend fun deleteStandingLeague() = myPremierLeagueDao.deleteStandingLeague()
+
     fun getMatchResults(round: String): Flow<List<MatchResultEntity>> = myPremierLeagueDao.getMatchResults(round)
 
     suspend fun insertMatchResults(matchResultList: List<MatchResultEntity>) = myPremierLeagueDao.insertMatchResult(matchResultList)
